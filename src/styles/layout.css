@@ -1,37 +1,37 @@
 .huawei-header {
-  background: linear-gradient(180deg, rgba(200, 16, 46, 0.06), transparent);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(31, 41, 51, 0.04);
+    background: linear-gradient(180deg, rgba(200, 16, 46, 0.06), transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(31, 41, 51, 0.04);
 }
 
 .container {
-  max-width: var(--container-w);
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    max-width: var(--container-w);
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .brand {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .nav a {
-  margin-left: 18px;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 8px 10px;
-  border-radius: 6px;
+    margin-left: 18px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 6px;
 }
 
 .nav a:hover {
-  color: var(--text);
-  background: var(--glass);
+    color: var(--text);
+    background: var(--glass);
 }
 
 .main {
-  padding: 28px 20px;
+    padding: 28px 20px;
 }

@@ -1,29 +1,32 @@
 .card {
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(31, 41, 51, 0.06);
-  padding: 18px;
-  margin-top: 14px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px rgba(31, 41, 51, 0.06);
+    padding: 18px;
+    margin-top: 14px;
 }
 
 h1 {
-  font-size: 20px;
-  margin: 0 0 8px 0;
+    font-size: 20px;
+    margin: 0 0 8px 0;
 }
 
 h2 {
-  font-size: 16px;
-  margin: 0 0 8px 0;
+    font-size: 16px;
+    margin: 0 0 8px 0;
 }
 
 p,
 li {
-  color: var(--muted);
-  font-size: 14px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 ul {
-  padding-left: 18px;
+    padding-left: 18px;
 }
 
-.muted { color: var(--muted); font-size: 14px }
+.muted {
+    color: var(--muted);
+    font-size: 14px
+}
