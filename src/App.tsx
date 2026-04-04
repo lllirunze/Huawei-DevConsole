@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Bookmarks from "./pages/Bookmarks";
 import MR from "./pages/MR";
-import "./styles/huawei.css";
+import "./styles/global.css";
+import "./styles/layout.css";
+import "./styles/components.css";
 
 export default function App(): JSX.Element {
   return (

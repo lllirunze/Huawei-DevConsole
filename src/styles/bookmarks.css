@@ -1,0 +1,44 @@
+.bookmarks-root {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.bookmark-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px
+}
+
+.bookmark-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--card);
+    box-shadow: 0 4px 12px rgba(31, 41, 51, 0.04)
+}
+
+.bookmark-favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: cover
+}
+
+.bookmark-meta {
+    display: flex;
+    flex-direction: column
+}
+
+.bookmark-title {
+    font-weight: 600;
+    color: var(--text)
+}
+
+.bookmark-url {
+    color: var(--muted);
+    font-size: 13px
+}
