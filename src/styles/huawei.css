@@ -1,0 +1,77 @@
+:root{
+  --bg:#f6f7f8;
+  --card:#ffffff;
+  --text:#1f2933;
+  --muted:#5b6470;
+  --accent:#c8102e;
+  --accent-weak:#e96a79;
+  --glass: rgba(255,255,255,0.6);
+  --radius:8px;
+  --container-w:1100px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+.huawei-header{
+  background: linear-gradient(180deg, rgba(200,16,46,0.06), transparent);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(31,41,51,0.04);
+}
+.container{
+  max-width:var(--container-w);
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  color:var(--accent);
+  font-weight:600;
+  font-size:18px;
+}
+.nav a{
+  margin-left:18px;
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:6px;
+}
+.nav a:hover{
+  color:var(--text);
+  background:var(--glass);
+}
+
+.main{padding:28px 20px}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow: 0 6px 18px rgba(31,41,51,0.06);
+  padding:18px;
+  margin-top:14px;
+}
+
+h1{font-size:20px;margin:0 0 8px 0}
+h2{font-size:16px;margin:0 0 8px 0}
+p,li{color:var(--muted);font-size:14px}
+ul{padding-left:18px}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1720;
+    --card:#0b1116;
+    --text:#e6eef6;
+    --muted:#b7c2cc;
+    --glass: rgba(255,255,255,0.03);
+  }
+}
