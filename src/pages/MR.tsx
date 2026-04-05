@@ -5,7 +5,7 @@ export default function MR(): JSX.Element {
     return (
         <section>
             <h1>MR Pipeline</h1>
-            <p className="muted">三个阶段：Patch 提交 → 创建合入请求 → MR 加分（UI 框架）</p>
+            <p className="muted">三个阶段: Patch 提交 → 创建合入请求 → MR 加分</p>
 
             <div className="pipeline-wrapper">
                 <div className="pipeline">
@@ -24,7 +24,7 @@ export default function MR(): JSX.Element {
                     </div>
 
                     <div className="stage">
-                        <div className="stage-title">3. +1 Score</div>
+                        <div className="stage-title">3. Score +1</div>
                         <div className="stage-body">
                             <AddScore />
                         </div>

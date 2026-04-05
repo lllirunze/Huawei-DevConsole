@@ -3,8 +3,8 @@
     --card: #ffffff;
     --text: #1f2933;
     --muted: #5b6470;
-    --accent: #c8102e;
-    --accent-weak: #e96a79;
+    --accent: #b35442;
+    --accent-weak: #e3a79a;
     --glass: rgba(255, 255, 255, 0.6);
     --radius: 8px;
     --container-w: 1100px;
@@ -32,4 +32,21 @@ body {
         --muted: #b7c2cc;
         --glass: rgba(255, 255, 255, 0.03);
     }
+}
+
+/* Explicit theme overrides when toggled via data-theme on <html> */
+[data-theme="dark"] {
+    --bg: #0f1720;
+    --card: #0b1116;
+    --text: #e6eef6;
+    --muted: #b7c2cc;
+    --glass: rgba(255,255,255,0.04);
+}
+
+[data-theme="light"] {
+    --bg: #f6f7f8;
+    --card: #ffffff;
+    --text: #1f2933;
+    --muted: #5b6470;
+    --glass: rgba(255,255,255,0.6);
 }
