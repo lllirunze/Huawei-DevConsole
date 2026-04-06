@@ -30,7 +30,7 @@ export default function App(): JSX.Element {
             <Link to="/mr">MR Panel</Link>
             <Link to="/todo">Todo</Link>
             <button aria-label="切换日间/夜间模式" title="切换日间/夜间模式" className="theme-toggle" onClick={toggleTheme}>
-              {theme === 'light' ? '🌙' : '☀︎'}
+              {theme === 'light' ? '🌙' : '☀️'}
             </button>
           </nav>
         </div>
