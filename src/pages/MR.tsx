@@ -106,25 +106,39 @@ function PatchSubmit(): JSX.Element {
         if (!validate()) return;
         setBusy(true);
         setErrors(null);
-        setStatus('开始执行 patch 提交流程（模拟）...');
+        setStatus('正在向服务器提交 patch 请求...');
 
         try {
-            // 模拟一系列 git 操作（UI 层面不执行真实 git）
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            console.log('找到仓：', repoMap[repoKey]);
-            await new Promise(resolve => setTimeout(resolve, 800));
-            console.log('checkout', branch);
-            await new Promise(resolve => setTimeout(resolve, 800));
-            console.log('apply patch', fileName);
-            await new Promise(resolve => setTimeout(resolve, 900));
-            console.log('git add & commit', commitText);
-            await new Promise(resolve => setTimeout(resolve, 900));
-            console.log('git push');
+            if (!file) throw new Error('缺少 patch 文件');
+            const text = await file.text();
 
-            setStatus('Patch 已成功提交到远程（模拟）。');
+            const payload = {
+                repoKey,
+                branch,
+                patchContent: text,
+                patchFilename: fileName,
+                commitText
+            };
+
+            const resp = await fetch('http://localhost:4000/submit-patch', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!resp.ok) {
+                const errBody = await resp.json().catch(() => ({ error: 'unknown' }));
+                throw new Error(errBody.error || `服务器返回 ${resp.status}`);
+            }
+
+            const data = await resp.json();
+            if (!data.ok) throw new Error(data.error || '未知错误');
+
+            const logs: string[] = data.logs || [];
+            setStatus('Patch 提交完成。服务器日志如下：\n' + logs.join('\n'));
         } catch (err) {
             console.error(err);
-            setErrors('提交过程中发生错误（模拟）：' + String(err));
+            setErrors('提交过程中发生错误：' + String(err));
         } finally {
             setBusy(false);
         }
