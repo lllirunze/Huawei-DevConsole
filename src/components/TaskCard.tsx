@@ -27,9 +27,18 @@ const typeColors: Record<TaskType, string> = {
 };
 
 export default function TaskCard({ task, onAdvance, onRevert, onDelete, onEdit }: Props) {
-    const [open, setOpen] = React.useState(false);
     const isFirst = task.stage === 0;
     const isLast = task.stage === 3;
+
+    function handleMoreChange(e: React.ChangeEvent<HTMLSelectElement>){
+        const v = e.target.value;
+        // reset
+        e.target.selectedIndex = 0;
+        if(v === 'edit') onEdit(task.id);
+        if(v === 'advance') onAdvance(task.id);
+        if(v === 'revert') onRevert(task.id);
+        if(v === 'delete') onDelete(task.id);
+    }
 
     return (
         <div className="task-card-row">
@@ -41,15 +50,13 @@ export default function TaskCard({ task, onAdvance, onRevert, onDelete, onEdit }
             </div>
 
             <div className="task-more">
-                <button className="more-btn" onClick={() => setOpen(s => !s)} aria-label="更多操作">⋯</button>
-                {open && (
-                    <div className="more-menu">
-                        <button onClick={() => { setOpen(false); onEdit(task.id); }}>修改</button>
-                        {!isLast && <button onClick={() => { setOpen(false); onAdvance(task.id); }}>推进</button>}
-                        {!isFirst && <button onClick={() => { setOpen(false); onRevert(task.id); }}>回退</button>}
-                        <button onClick={() => { setOpen(false); onDelete(task.id); }}>删除</button>
-                    </div>
-                )}
+                <select className="more-select" aria-label="更多操作" onChange={handleMoreChange}>
+                    <option value="">···</option>
+                    <option value="edit">修改</option>
+                    {!isLast && <option value="advance">推进</option>}
+                    {!isFirst && <option value="revert">回退</option>}
+                    <option value="delete">删除</option>
+                </select>
             </div>
         </div>
     );
