@@ -231,15 +231,37 @@ function CreateMR(): JSX.Element {
         setStatus(null);
         if (!validate()) return;
         setBusy(true);
-        setStatus('创建 MR（模拟）...');
+        setStatus('正在创建 MR...');
         try {
-            // 模拟 API 调用
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            console.log('调用创建 MR API', { projectId: repoMap[repoKey], sourceBranch, targetBranch, title, description });
-            setStatus('MR 创建成功（模拟）。');
+            const payload = {
+                projectId: repoMap[repoKey],
+                title,
+                description,
+                source_branch: sourceBranch,
+                target_branch: targetBranch
+            };
+
+            const resp = await fetch('http://localhost:4000/create-mr', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!resp.ok) {
+                const errBody = await resp.json().catch(() => ({ error: 'unknown' }));
+                throw new Error(errBody.error || `服务器返回 ${resp.status}`);
+            }
+
+            const data = await resp.json();
+            if (!data.ok) throw new Error(data.error || '未知错误');
+
+            // CodeHub response is under data.data
+            const result = data.data || {};
+            const webUrl = result.web_url || result.url || JSON.stringify(result);
+            setStatus('MR 创建成功: ' + webUrl);
         } catch (err) {
             console.error(err);
-            setErrors('创建 MR 失败（模拟）：' + String(err));
+            setErrors('创建 MR 失败：' + String(err));
         } finally {
             setBusy(false);
         }
@@ -318,15 +340,26 @@ function AddScore(): JSX.Element {
         setStatus(null);
         if (!validate()) return;
         setBusy(true);
-        setStatus('正在加分（模拟）...');
+        setStatus('正在向服务器请求加分...');
         try {
-            // 模拟 API 请求
-            await new Promise(resolve => setTimeout(resolve, 800));
-            console.log('调用加分 API, mrUrl=', mrUrl);
-            setStatus('+1 加分成功（模拟）');
+            const resp = await fetch('http://localhost:4000/vote-mr', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: mrUrl })
+            });
+
+            if (!resp.ok) {
+                const errBody = await resp.json().catch(() => ({ error: 'unknown' }));
+                throw new Error(errBody.error || `服务器返回 ${resp.status}`);
+            }
+
+            const data = await resp.json();
+            if (!data.ok) throw new Error(data.error || '未知错误');
+
+            setStatus('加分成功：' + (data.data ? JSON.stringify(data.data) : '完成'));
         } catch (err) {
             console.error(err);
-            setErrors('加分失败（模拟）：' + String(err));
+            setErrors('加分失败：' + String(err));
         } finally {
             setBusy(false);
         }
