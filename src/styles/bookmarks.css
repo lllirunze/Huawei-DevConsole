@@ -1,44 +1,75 @@
 .bookmarks-root {
     display: flex;
     flex-direction: column;
-    gap: 12px
+    gap: 10px;
+    font-size: 14px;
+    /* 👈 全局缩小 */
 }
 
-.bookmark-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 8px
+/* 卡片 */
+.bookmark-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 8px 10px;
+    /* 👈 更紧凑 */
+    box-shadow: 0 4px 12px rgba(31, 41, 51, 0.05);
+    transition: all 0.2s ease;
 }
 
-.bookmark-item {
+/* header */
+.bookmark-card-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 8px;
-    background: var(--card);
-    box-shadow: 0 4px 12px rgba(31, 41, 51, 0.04)
+    gap: 6px;
+    font-weight: 500;
+    /* 👈 稍微降低粗细 */
+    font-size: 13px;
+    /* 👈 变小 */
 }
 
-.bookmark-favicon {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    object-fit: cover
+/* 标题 */
+.bookmark-card-title {
+    color: var(--text);
 }
 
-.bookmark-meta {
+/* 点击效果 */
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    color: #5b8cff;
+}
+
+/* 子节点 */
+.bookmark-children {
+    margin-top: 6px;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    gap: 6px;
 }
 
-.bookmark-title {
-    font-weight: 600;
-    color: var(--text)
+/* 层级缩进更紧凑 */
+.level-0 {
+    border-left: 4px solid #5b8cff;
 }
 
-.bookmark-url {
-    color: var(--muted);
-    font-size: 13px
+.level-1 {
+    margin-left: 10px;
+    border-left: 4px solid #61d9a3;
+}
+
+.level-2 {
+    margin-left: 20px;
+    border-left: 4px solid #f7c948;
+}
+
+.level-3 {
+    margin-left: 30px;
+    border-left: 4px solid #ff7a7a;
+}
+
+.level-4 {
+    margin-left: 40px;
+    border-left: 4px solid #b084f5;
 }

@@ -1,27 +1,27 @@
 import React from "react";
 import "../styles/bookmarks.css";
+import BookmarkNode from "../components/BookmarkNode";
+import { chromeBookmarks } from "../data/bookmarks";
 
 export default function Bookmarks(): JSX.Element {
+    const roots = chromeBookmarks.roots;
+
     return (
         <section className="bookmarks-root">
             <h1>Bookmarks</h1>
-            <p className="muted">此处将展示来自 Windows Chrome 的书签（稍后接入）。</p>
+            <p className="muted">真实 Chrome 书签结构（支持无限嵌套）</p>
 
-            <div className="bookmark-list">
-                <div className="bookmark-item">
-                    <img className="bookmark-favicon" src="/favicon.svg" alt="f" />
-                    <div className="bookmark-meta">
-                        <div className="bookmark-title">示例书签标题</div>
-                        <div className="bookmark-url">https://example.com/path</div>
-                    </div>
-                </div>
-                <div className="bookmark-item">
-                    <img className="bookmark-favicon" src="/favicon.svg" alt="f" />
-                    <div className="bookmark-meta">
-                        <div className="bookmark-title">另一个书签</div>
-                        <div className="bookmark-url">https://another.example/</div>
-                    </div>
-                </div>
+            <div className="bookmark-tree">
+
+                {/* 书签栏 */}
+                <BookmarkNode node={roots.bookmark_bar} />
+
+                {/* 其他书签 */}
+                <BookmarkNode node={roots.other} />
+
+                {/* 同步书签 */}
+                <BookmarkNode node={roots.synced} />
+
             </div>
         </section>
     );
