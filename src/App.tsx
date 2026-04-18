@@ -7,6 +7,9 @@ import Todo from "./pages/Todo";
 import "./styles/global.css";
 import "./styles/layout.css";
 import "./styles/components.css";
+import Tools from "./pages/Tools";
+import RepoDropdown from "./components/RepoDropdown";
+
 
 export default function App(): JSX.Element {
   const [theme, setTheme] = useState<string>(() => {
@@ -29,6 +32,8 @@ export default function App(): JSX.Element {
             <Link to="/bookmarks">Bookmarks</Link>
             <Link to="/mr">MR Panel</Link>
             <Link to="/todo">Todo</Link>
+            <Link to="/tools">Tools</Link>
+            <RepoDropdown />
             <button aria-label="切换日间/夜间模式" title="切换日间/夜间模式" className="theme-toggle" onClick={toggleTheme}>
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
@@ -42,6 +47,7 @@ export default function App(): JSX.Element {
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/mr" element={<MR />} />
           <Route path="/todo" element={<Todo />} />
+          <Route path="/tools" element={<Tools />} />
         </Routes>
       </main>
     </BrowserRouter>

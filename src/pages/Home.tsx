@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
@@ -13,6 +13,7 @@ export default function Home(): JSX.Element {
                         <Link to="/bookmarks" className="home-card chip">快速查看书签</Link>
                         <Link to="/mr" className="home-card chip">发起 MR</Link>
                         <Link to="/todo" className="home-card chip">Todo</Link>
+                        <Link to="/tools" className="home-card chip">Tools</Link>
                     </div>
                 </div>
                 <img src="/src/assets/hero.png" alt="hero" />

@@ -1,0 +1,54 @@
+/* 外层容器 */
+.repo-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* ⭐ trigger 完全复用 .nav a，不额外定义样式 */
+.repo-trigger {
+    cursor: pointer;
+}
+
+/* 下拉菜单 */
+.repo-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;               /* ⭐ 右对齐 trigger */
+    margin-top: 6px;
+
+    width: 220px;
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid rgba(31, 41, 51, 0.06);
+    box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+
+    padding: 6px;
+    z-index: 1000;
+
+    text-align: left;       /* ⭐ 内容左对齐 */
+}
+
+/* 每一项 */
+.repo-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* hover */
+.repo-item:hover {
+    background: var(--glass);
+    color: var(--text);
+}
+
+/* 空状态 */
+.repo-empty {
+    padding: 10px;
+    text-align: center;
+    color: var(--muted);
+}
